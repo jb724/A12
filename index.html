@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Example</title>
+</head>
+<body>
+  <h1>A12: Create and Display Cookies</h1>
+  <p id="cookieValue"></p>
+  <script>
+    // finds the value of a cookie named username stored in the user’s browser
+    var cookie = document.cookie.split('; ').find(row => row.startsWith('username='));
+
+    // checks if cookie's value is truthy, then sets the cookie value to the user's input or null if it's falsy
+    var cookieValue = cookie ? cookie.split('=')[1] : null;
+
+    // checks if cookieValue is falsy
+    if (!cookieValue)
+    {
+      // brings up an input box to allow for user input
+      var username = prompt("Please enter your username:", "");
+
+      // checks if username is not null or an empty string
+      if (username != null && username != "")
+      {
+        // sets a cookie named username with the value of the username value in the user's browser
+        document.cookie = "username=" + username;
+
+        // sets cookieValue to the value of the username variable
+        cookieValue = username;
+      }
+    }
+
+    // displays the text "Cookie value: " followed by the value of the cookieValue variable in the web page
+    document.getElementById("cookieValue").innerHTML = "Cookie value: " + cookieValue;
+  </script>
+  <footer><p>&copy; 2023, Jonathan Barnes</p></footer>
+</body>
+</html>
